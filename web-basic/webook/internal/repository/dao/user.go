@@ -14,7 +14,6 @@ func NewUserDao() *UserDao {
 }
 func (ud *UserDao) Insert(ctx context.Context, u domain.User) error {
 	return nil
-
 }
 
 type User struct {

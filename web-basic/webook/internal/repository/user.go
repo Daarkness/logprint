@@ -14,8 +14,13 @@ func NewUserRepository() *UserRepository {
 }
 
 func (ur *UserRepository) Create(ctx context.Context, u domain.User) error {
-	dao := user.NewUserDao()
-	dao.INSERT(ctx, u)
+	d := dao.NewUserDao()
+	d.Insert(ctx, dao.User{
+		Id:    u.Id,
+		Name:  u.Name,
+		Email: u.Email,
+		Phone: u.Phone,
+	})
 	return nil
 }
 

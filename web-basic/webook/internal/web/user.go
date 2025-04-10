@@ -34,7 +34,7 @@ func NewUserHandler() *UserHandler {
 	return &UserHandler{
 		emailRegex:    regexp.MustCompile(emailRegex, regexp.None),
 		passwordRegex: regexp.MustCompile(passwordRegex, regexp.None),
-		svc:           service.NewUserService(repository.NewUserRepository()),
+		//svc:           service.NewUserService(repository.NewUserRepository()),
 	}
 }
 
@@ -70,9 +70,9 @@ type U struct {
 func (u *UserHandler) SignUp(c *gin.Context) {
 	req := NewUserHandler()
 	fmt.Println("userSignUp ")
-	req := U{
-		Username: c.PostForm("username"),
-	}
+	//req := U{
+	//	Username: c.PostForm("username"),
+	//}
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
